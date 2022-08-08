@@ -1,9 +1,9 @@
+//Joao Luis Chiarelotto Crema
 #include <iostream>
 #include <string>
-#include <stack>
 #include <sstream>
 #include <cstdlib>
-
+#include <stack>
 using namespace std;
 
 int main()
@@ -12,12 +12,12 @@ int main()
 	stack<char> saida;		
 	stack<char> temp;		
 	stack<char> resposta;	
-
 	string comando;
 
 	cout << "Digite a operacao => ";
 	cin >> comando;
-
+	
+	// Algoritmo Shunting Yard: https://en.wikipedia.org/wiki/Shunting_yard_algorithm
 	for(int i=0; i<comando.size(); i++)
 	{
 		switch(comando[i])
@@ -40,7 +40,6 @@ int main()
 			break;
 		}
 	}
-
 	while(!operadores.empty())
 	{
 		saida.push(operadores.top());
@@ -53,16 +52,8 @@ int main()
 		temp.push(saida.top());
 		saida.pop();
 	}
-
-	/* while(!temp.empty())
-	{
-		cout << temp.top() << " ";
-		temp.pop();
-	} */
-	
 	while(!temp.empty())
 	{
-
 		if(temp.top() == '+')
 		{
 			stringstream res;
@@ -74,7 +65,6 @@ int main()
 			cout << "B+A=" << b+a << endl;
 			resposta.push(b+a);
 		} 
-
 		else if(temp.top() == '-')
 		{
 			stringstream res;
@@ -86,7 +76,6 @@ int main()
 			cout << "B-A=" << b-a << endl;
 			resposta.push(b-a);
 		} 
-		
 		else if(temp.top() == '*')
 		{
 			stringstream res;
